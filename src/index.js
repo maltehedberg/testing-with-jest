@@ -11,14 +11,14 @@ window.onload = function () {
     // Funktion för att uppdatera visningen av stackens topp
     function update() {
         const top = stack.peek();
-        //display.innerHTML = top !== undefined ? top : "n/a";
+        display.innerHTML = top !== undefined ? top : "n/a";
     }
 
     // POP – ta bort översta elementet
     pop.addEventListener("click", function () {
         const removed = stack.pop();
         alert("Tog bort " + removed);
-        update();   // ⭐ Viktigt för Selenium-testet
+        update();   //Viktigt för Selenium-testet
     });
 
     // PUSH – lägg till nytt element

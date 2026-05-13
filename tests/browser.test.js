@@ -38,6 +38,14 @@ describe('Clicking "Pusha till stacken"', () => {
 describe('Clicking "Poppa från stacken"', () => {
     it('should remove the top element from the stack and update the display', async () => {
 
+        //Töm stacken först
+        while (await driver.findElement(By.id('top_of_stack')).getText() !== "n/a") {
+            let pop = await driver.findElement(By.id('pop'));
+            await pop.click();
+            let alert = await driver.switchTo().alert();
+            await alert.accept();
+        }
+
         // 1. Lägg till två element
         let push = await driver.findElement(By.id('push'));
 
@@ -57,9 +65,13 @@ describe('Clicking "Poppa från stacken"', () => {
         let alert3 = await driver.switchTo().alert();
         await alert3.accept();
 
+        //Vänta lite så DOM hinner uppdateras
+        await driver.sleep(200);
+
         // 3. Kontrollera att översta elementet nu är "Första"
         let top = await driver.findElement(By.id('top_of_stack')).getText();
         expect(top).toEqual("Första");
     });
 });
+
  
