@@ -9,8 +9,9 @@ exports.push = function (x) {
 
 // Returnerar det översta elementet i stacken och tar bort det
 exports.pop = function () {
-    return stack.pop();
+    return stack[0]; // FEL med flit
 }
+
 
 // Returnerar det översta elementet i stacken
 exports.peek = function () {
